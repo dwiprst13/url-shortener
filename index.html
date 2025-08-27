@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Go URL Shortener</title>
+</head>
+<body>
+  <h1>URL Shortener</h1>
+  <form id="shortenForm">
+  <input type="text" id="url" placeholder="Masukkan URL">
+  <input type="text" id="custom" placeholder="Alias (opsional)">
+  <button type="submit">Shorten</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+document.getElementById("shortenForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const url = document.getElementById("url").value;
+  const custom = document.getElementById("custom").value;
+
+const res = await fetch("http://localhost:8080/api/shorten", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ url, alias: custom }) // Ganti 'custom' dengan 'alias'
+});
+
+  const data = await res.json();
+  document.getElementById("result").innerText = data.short_url || data.error;
+});
+</script>

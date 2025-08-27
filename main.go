@@ -38,7 +38,7 @@ func main() {
 	}
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/api/shorten/", rateLimit(jsonOnly(shortenHandler)))
+	mux.HandleFunc("/api/shorten", rateLimit(jsonOnly(shortenHandler)))
 	mux.HandleFunc("/,", redirectHandler)
 
 	srv := &http.Server{
