@@ -23,8 +23,8 @@ func generateCode(n int) (string, error) {
 	return string(b), nil
 }
 
-func normalizedURL(raw string) (string, error) {
-	if raw == ""{
+func normalizeURL(raw string) (string, error) {
+	if raw == "" {
 		return "", errors.New("empty url")
 	}
 	u, err := url.Parse(raw)

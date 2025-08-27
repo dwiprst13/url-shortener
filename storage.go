@@ -5,9 +5,9 @@ import (
 	"sync"
 )
 
-type URLRecord struct{
-	Code	string
-	URL		string
+type URLRecord struct {
+	Code string
+	URL  string
 }
 
 type Storage interface {
@@ -17,9 +17,9 @@ type Storage interface {
 }
 
 type MemoryStore struct {
-	mu			sync.RWMutex
-	codeToURL	map[string]string
-	urlToCode	map[string]string
+	mu        sync.RWMutex
+	codeToURL map[string]string
+	urlToCode map[string]string
 }
 
 func NewMemoryStore() *MemoryStore {
